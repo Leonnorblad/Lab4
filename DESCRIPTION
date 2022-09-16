@@ -1,0 +1,14 @@
+Package: Lab4Pack
+Type: Package
+Title: Linreg and theme for Linköping University
+Version: 1.0
+Date: 2022-09-16
+Author: Leonard Persson Norblad & Jacob Sibanda
+Maintainer: Leonard Persson Norblad <leope744@student.liu.se> Jacob Sibanda <jacsi259@student.liu.se>
+Description: Computes linear regression by matrix multiplication of least squares and a theme for Linköping University.
+License: GPL-3 + file LICENSE
+RoxygenNote: 7.2.1
+Encoding: UTF-8
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
