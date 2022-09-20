@@ -12,25 +12,21 @@
 #'       x="Penatal Length") +
 #'  LiU_theme()
 #' 
-#' @export LiU_theme
+#' @export
 #' @import ggplot2
-#' @import extrafont
 
 LiU_theme <- function(){
   theme(# Title
         plot.title = element_text(hjust=0.5,        # Center the title
                                   face="bold",      # Bold text
                                   size=14,          # Change the size
-                                  family="Tahoma",  # Change the font style
                                   color="#3DD2DC"), # LiU blue colour
         # Axis title
         axis.title = element_text(face="bold",      # Bold text
                                   size=12,          # Change the size
-                                  family="Tahoma",  # Change the font style
                                   color="#3DD2DC"), # LiU blue colour
         # Axis text
-        axis.text = element_text(size=10,               # Change the size
-                                 family="Tahoma"),      # Change the font style
+        axis.text = element_text(size=10),               # Change the size
         panel.border = element_rect(fill = NA,          # No border colour  
                                     colour = "grey20"), # Gray colour for the border
         panel.grid = element_line(colour = "grey85"),   # Gray color for the grid

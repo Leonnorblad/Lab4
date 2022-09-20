@@ -42,7 +42,6 @@ linreg <- setRefClass("linreg",
                                     X = "matrix"),
                       methods = list(
                           linreg_func = function(){
-                             # if(!is.data.frame(data)|!is.formula(formula)){stop()}
                               df_name <<- as.character(substitute(data))
                               X <<- model.matrix(formula, data)                # Independen variable(s)
                               variable_name_y <- all.vars(formula)[1]         # Name of dependet variable

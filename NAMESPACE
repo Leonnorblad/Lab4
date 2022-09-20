@@ -2,5 +2,4 @@
 
 export(LiU_theme)
 exportClasses(linreg)
-import(extrafont)
 import(ggplot2)
