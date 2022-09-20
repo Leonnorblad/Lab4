@@ -180,9 +180,3 @@ linreg <- setRefClass("linreg",
                       )
 )
 
-
-example <- linreg(data=iris, formula=Petal.Length~Species)
-example$linreg_func()
-example$summary()
-example$print()
-
