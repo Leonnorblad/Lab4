@@ -1,0 +1,68 @@
+---
+title: "Linreg vignette"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Linreg vignette}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r echo=TRUE}
+# Setup
+library(Lab4Pack)
+data(iris)
+```
+
+## Methods
+### Setup
+
+```{r}
+s <- linreg(data=iris, formula=Petal.Width~Species)
+s$linreg_func()
+```
+
+### print()
+Returns the function call and estimated coefficients
+```{r}
+s$print()
+```
+
+
+### plot()
+Plots two ggplots. Residuals vs fitted and scale-location
+```{r}
+s$plot()
+```
+
+### resid()
+Returns a vector of residuals
+```{r}
+s$print()
+```
+
+### pred()
+Returns a vector of predicted values
+```{r}
+s$pred()
+```
+
+### coef()
+Returns a vector of estimated coefficients
+```{r}
+s$coef()
+```
+
+### summary()
+Returns a short summary of the model estimation
+```{r}
+s$summary()
+```
+
+

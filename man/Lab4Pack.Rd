@@ -3,9 +3,9 @@
 \docType{package}
 \name{Lab4Pack}
 \alias{Lab4Pack}
-\title{Linreg and theme for Linköping University}
+\title{Linear Regression and LiU Theme}
 \description{
-Computes linear regression by matrix multiplication of least squares and a theme for Linköping University.
+Computes linear regression by matrix multiplication of least squares and it contains a ggplot theme for Linköping University.
 }
 \author{
 Leonard Persson Norblad \email{leope744@student.liu.se}

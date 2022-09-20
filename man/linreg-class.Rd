@@ -11,14 +11,24 @@
 \item{formula}{A formula}
 }
 \value{
-coefficients etc...
+\code{print()} Returns the function call and estimated coefficients
+
+\code{plot()} Plots two ggplots. Residuals vs fitted and scale-location
+
+\code{resid()} Returns a vector of residuals
+
+\code{pred()} Returns a vector of predicted values
+
+\code{coef()} Returns a vector of estimated coefficients
+
+\code{summary()} Returns a short summary of the model estimation
 }
 \description{
-Computes linear regression by matrix multiplication of least squares
+Computes linear regression by matrix multiplication of least squares.
 }
 
 \examples{
-example <- linreg(data=iris, formula=formula)
+example <- linreg(data=iris, formula=Petal.Length~Species)
 example$linreg_func()
 example$summary()
 example$print()

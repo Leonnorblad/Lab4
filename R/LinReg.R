@@ -1,13 +1,25 @@
 #' Linear regression by least squares
 #' 
-#' Computes linear regression by matrix multiplication of least squares
+#' Computes linear regression by matrix multiplication of least squares.
 #' 
 #' @param Data A data.frame
 #' @param formula A formula
+
+#' @return
+#' \code{print()} Returns the function call and estimated coefficients
 #'
-#' @return coefficients etc... 
-#' @examples 
-#' example <- linreg(data=iris, formula=formula)
+#' \code{plot()} Plots two ggplots. Residuals vs fitted and scale-location
+#'
+#' \code{resid()} Returns a vector of residuals
+#' 
+#' \code{pred()} Returns a vector of predicted values
+#' 
+#' \code{coef()} Returns a vector of estimated coefficients
+#' 
+#' \code{summary()} Returns a short summary of the model estimation
+#' 
+#' @examples
+#' example <- linreg(data=iris, formula=Petal.Length~Species)
 #' example$linreg_func()
 #' example$summary()
 #' example$print()
@@ -30,7 +42,7 @@ linreg <- setRefClass("linreg",
                                     X = "matrix"),
                       methods = list(
                           linreg_func = function(){
-                              if(!is.data.frame(data)|!is.formula(formula)){stop()}
+                             # if(!is.data.frame(data)|!is.formula(formula)){stop()}
                               df_name <<- as.character(substitute(data))
                               X <<- model.matrix(formula, data)                # Independen variable(s)
                               variable_name_y <- all.vars(formula)[1]         # Name of dependet variable
@@ -76,7 +88,7 @@ linreg <- setRefClass("linreg",
                               plot_data1 <- data.frame(e_hat=result$e_hat,
                                                        y_hat=result$y_hat)
                               # Calculate the median residual for each fitted value
-                              plot_median_data <- aggregate(plot_data$e_hat, list(plot_data$y_hat), FUN=median)
+                              plot_median_data <- aggregate(plot_data1$e_hat, list(plot_data1$y_hat), FUN=median)
                               colnames(plot_median_data) <- c("y_hat", "median")
                               # Creating a data.frame with: Residuals, fitted values and the median for each fitted value
                               plot_data <- merge(plot_data1, plot_median_data, by="y_hat")
@@ -167,3 +179,10 @@ linreg <- setRefClass("linreg",
                           }
                       )
 )
+
+
+example <- linreg(data=iris, formula=Petal.Length~Species)
+example$linreg_func()
+example$summary()
+example$print()
+

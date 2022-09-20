@@ -1,49 +1,40 @@
 #' Graphics for Linköping University
-#' A ggplot2 theme for LiU. Recommend to render plot by cairo_pdf device in 4 x 6 dimensions.
-#' @param
 #' 
-# 
-data(iris)
-require(ggplot2)
-library(png)
-library(extrafont)
-
-
-# Read the png
-liu_logo <- grid::rasterGrob(png::readPNG("liu_logo.png"), interpolate = TRUE)
+#' A ggplot2 theme for LiU. Recommend to render plot by cairo_pdf device in 4 x 6 dimensions.
+#' 
+#' 
+#' @examples
+#' data(iris)
+#' ggplot(iris, aes(y=Sepal.Length, x=Petal.Length)) + 
+#' geom_point(size=1) + 
+#'  labs(title="Scatterplot of Sepal Length and Petal Length",
+#'       y="Sepal Length",
+#'       x="Penatal Length") +
+#'  LiU_theme()
+#' 
+#' @export LiU_theme
+#' @import ggplot2
+#' @import extrafont
 
 LiU_theme <- function(){
-  theme(plot.title = element_text(hjust=0.5, face="bold", size=14, family="Tahoma"), # Title
-        axis.title = element_text(face="bold", size=12, family="Tahoma"),            # Axis title
-        axis.text = element_text(size=10, family="Tahoma"),                          # Axis text
-        plot.margin = unit(c(1, 1, 3, 1), "lines"),
-        panel.border = element_rect(fill = NA, colour = "grey20"),
-        panel.grid = element_line(colour = "grey85"),
-        panel.background = element_rect(fill = "white", colour = NA)
+  theme(# Title
+        plot.title = element_text(hjust=0.5,        # Center the title
+                                  face="bold",      # Bold text
+                                  size=14,          # Change the size
+                                  family="Tahoma",  # Change the font style
+                                  color="#3DD2DC"), # LiU blue colour
+        # Axis title
+        axis.title = element_text(face="bold",      # Bold text
+                                  size=12,          # Change the size
+                                  family="Tahoma",  # Change the font style
+                                  color="#3DD2DC"), # LiU blue colour
+        # Axis text
+        axis.text = element_text(size=10,               # Change the size
+                                 family="Tahoma"),      # Change the font style
+        panel.border = element_rect(fill = NA,          # No border colour  
+                                    colour = "grey20"), # Gray colour for the border
+        panel.grid = element_line(colour = "grey85"),   # Gray color for the grid
+        panel.background = element_rect(fill = "white", # White background
+                                        colour = NA)    # No colour
   )
 }
-
-add_LiU_logo <- function(plot){
-  graph_data<-ggplot_build(p)$data[[1]]
-  x_max <- max(graph_data$x)
-  x_min <- min(graph_data$x)
-  y_min <- min(graph_data$y)
-  plot <- plot + annotation_custom(liu_logo,
-                                   xmin = x_max-(x_max*0.18),
-                                   xmax=x_max,
-                                   ymin = y_min*(y_min*-0.09)
-                                   )
-  return(plot)
-}
-
-
-### Examples
-p <- ggplot(iris, aes(y=Sepal.Length, x=Petal.Length)) + 
-  geom_point(size=1, color="#3DD2DC") + 
-  coord_cartesian(clip = "off") + 
-  labs(title="Scatterplot of Sepal Length and Petal Length",
-       y="Sepal Length",
-       x="Penatal Length") + LiU_theme()
-add_LiU_logo(p)
-
-      
