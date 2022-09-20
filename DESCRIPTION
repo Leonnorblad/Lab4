@@ -14,5 +14,7 @@ Suggests:
     rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
-Import: ggplot2 extrafont
 VignetteBuilder: knitr
+Imports: 
+    ggplot2,
+    methods
