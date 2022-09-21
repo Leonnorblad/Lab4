@@ -5,13 +5,13 @@
 #' @import ggplot2
 #' 
 #' @examples
-#' data(iris)
-#'  ggplot(iris, aes(y=Sepal.Length, x=Petal.Length)) + 
-#'  geom_point(size=1) + 
-#'  labs(title="Scatterplot of Sepal Length and Petal Length",
-#'       y="Sepal Length",
-#'       x="Penatal Length") +
-#'  LiU_theme()
+#'# data(iris)
+#'#  ggplot(iris, aes(y=Sepal.Length, x=Petal.Length)) + 
+#'#  geom_point(size=1) + 
+#'#  labs(title="Scatterplot of Sepal Length and Petal Length",
+#'#       y="Sepal Length",
+#'#       x="Penatal Length") +
+#'#  LiU_theme()
 #' 
 #' 
 #' @export

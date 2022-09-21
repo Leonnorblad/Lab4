@@ -44,6 +44,7 @@ linreg <- setRefClass("linreg",
                                     y = "numeric"),
                       methods = list(
                           initialize = function(formula, data){
+                              formula <<-formula
                               df_name <<- as.character(substitute(data))
                               X <<- model.matrix(formula, data)                # Independen variable(s)
                               y <<- data[,all.vars(formula)[1]]                     # Dependent variable
@@ -76,11 +77,11 @@ linreg <- setRefClass("linreg",
                           },
                           print = function(){
                               
-                              cat("Call:\nlm(formula = ", format(formula), ", data = ", df_name,")\n\n", sep="")
+                              cat("Call:\nlinreg(formula = ", format(formula), ", data = ", df_name,")\n\n", sep="")
                               temp <- as.vector(result$beta_hat)
                               names(temp) <- colnames(X)
                               cat("Coefficients:\n")
-                              temp
+                              print.data.frame(temp)
                           },
                           plot = function(){
                               # Data preperation for the first plot:
@@ -166,12 +167,21 @@ linreg <- setRefClass("linreg",
                               return(result$e_hat)
                           },
                           summary = function(){
+                              sig_level <- rep(" ", length(result$p_value))
+                            
+                              for(i in 1:length(result$p_value)){
+                                if(result$p_value[i]<0.1){sig_level[i]<-"."}
+                                if(result$p_value[i]<0.05){sig_level[i]<-"*"}
+                                if(result$p_value[i]<0.01){sig_level[i]<-"**"}
+                                if(result$p_value[i]<0.001){sig_level[i]<-"***"}
+                              }
                               data_frame <- data.frame(Estimate = as.vector(result$beta_hat),
                                                        "Std. Error" = as.vector(diag(sqrt(abs(result$var_beta_hat)))),
                                                        t_value = result$t_beta,
-                                                       p_value = result$p_value)
+                                                       p_value = result$p_value,
+                                                       sig_level = sig_level)
                               rownames(data_frame)<-rownames(result$beta_hat)
-                              colnames(data_frame)<-c("Estimate", "Std. Error", "t value", "p value")
+                              colnames(data_frame)<-c("Estimate", "Std. Error", "t value", "p value", "")
                               vec<-as.vector(sqrt(result$sigma_2_hat)[1])
                               cat("Coefficients:\n")
                               print.data.frame(data_frame)
