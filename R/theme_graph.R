@@ -2,18 +2,20 @@
 #' 
 #' A ggplot2 theme for LiU. Recommend to render plot by cairo_pdf device in 4 x 6 dimensions.
 #' 
+#' @import ggplot2
 #' 
 #' @examples
 #' data(iris)
-#' ggplot(iris, aes(y=Sepal.Length, x=Petal.Length)) + 
-#' geom_point(size=1) + 
+#'  ggplot(iris, aes(y=Sepal.Length, x=Petal.Length)) + 
+#'  geom_point(size=1) + 
 #'  labs(title="Scatterplot of Sepal Length and Petal Length",
 #'       y="Sepal Length",
 #'       x="Penatal Length") +
 #'  LiU_theme()
 #' 
+#' 
 #' @export
-#' @import ggplot2
+
 
 LiU_theme <- function(){
   theme(# Title

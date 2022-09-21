@@ -29,9 +29,9 @@ Computes linear regression by matrix multiplication of least squares.
 
 \examples{
 example <- linreg(data=iris, formula=Petal.Length~Species)
-example$linreg_func()
 example$summary()
 example$print()
+
 }
 \references{
 Edlund, O. (2011). Some Notes on Least Squares, OR-factorization, SVD and Fitting. \url{http://staff.www.ltu.se/~jove/courses/c0002m/least_squares.pdf}

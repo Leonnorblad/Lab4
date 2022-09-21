@@ -20,9 +20,9 @@
 #' 
 #' @examples
 #' example <- linreg(data=iris, formula=Petal.Length~Species)
-#' example$linreg_func()
 #' example$summary()
 #' example$print()
+#' 
 #' @references Edlund, O. (2011). Some Notes on Least Squares, OR-factorization, SVD and Fitting. \url{http://staff.www.ltu.se/~jove/courses/c0002m/least_squares.pdf}
 #' @export linreg
 #' @import ggplot2 methods
@@ -40,13 +40,13 @@ linreg <- setRefClass("linreg",
                                     var_beta_hat = "matrix",
                                     t_beta = "matrix",
                                     p_value = "matrix",
-                                    X = "matrix"),
+                                    X = "matrix",
+                                    y = "numeric"),
                       methods = list(
-                          linreg_func = function(){
+                          initialize = function(formula, data){
                               df_name <<- as.character(substitute(data))
                               X <<- model.matrix(formula, data)                # Independen variable(s)
-                              variable_name_y <- all.vars(formula)[1]         # Name of dependet variable
-                              y <- data[,variable_name_y]                     # Dependent variable
+                              y <<- data[,all.vars(formula)[1]]                     # Dependent variable
                               
                               # Beta (Regression coefficients)
                               result$beta_hat <<- solve(t(X)%*%X)%*%t(X)%*%y

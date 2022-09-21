@@ -25,7 +25,6 @@ data(iris)
 To use the function, first run the command below. 
 ```{r}
 s <- Lab4Pack::linreg(data=iris, formula=Petal.Width~Species)
-s$linreg_func()
 ```
 
 ### print()
